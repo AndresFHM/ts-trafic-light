@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 interface FunctionalTrafficLightProps {}
 
-export const FunctionalTrafficLight: React.FC<FunctionalTrafficLightProps> = ({}) => {
+export const FunctionalTrafficLight: React.FC<FunctionalTrafficLightProps> = () => {
   const [firstColor, setFirstColor] = useState<"red" | "black">("red");
   const [secondColor, setSecondColor] = useState<"black" | "yellow">("black");
   const [thirdColor, setThirdColor] = useState<"black" | "green">("black");
@@ -11,10 +11,10 @@ export const FunctionalTrafficLight: React.FC<FunctionalTrafficLightProps> = ({}
   const nextState = () => {
     if (firstColor === "red") {
       setFirstColor("black");
-      setSecondColor("yellow");
-    } else if (secondColor === "yellow") {
-      setSecondColor("black");
       setThirdColor("green");
+    } else if (thirdColor === "green") {
+      setSecondColor("yellow");
+      setThirdColor("black");
     } else {
       setFirstColor("red");
       setSecondColor("black");

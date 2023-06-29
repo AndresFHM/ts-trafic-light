@@ -1,7 +1,14 @@
 
 import { Component } from "react";
 
-export class ClassTrafficLight extends Component {
+interface ClassTrafficLightProps { }
+interface ClassTrafficLightState{
+  firstColor: "red" | "black";
+  secondColor: "black" | "yellow";
+  thirdColor: "black" | "green";
+}
+
+export class ClassTrafficLight extends Component<ClassTrafficLightProps, ClassTrafficLightState> {
   constructor(props: ClassTrafficLightProps) {
     super(props);
     this.state = {
@@ -12,12 +19,12 @@ export class ClassTrafficLight extends Component {
   }
 
   nextState = () => {
-    const { firstColor, secondColor, thirdColor } = this.state;
+    const { firstColor,  thirdColor } = this.state;
 
     if (firstColor === "red") {
-      this.setState({ firstColor: "black", secondColor: "yellow" })
-    } else if (secondColor === "yellow") {
-      this.setState({secondColor: "black", thirdColor: "green"})
+      this.setState({ firstColor: "black", thirdColor: "green" })
+    } else if (thirdColor === "green") {
+      this.setState({secondColor: "yellow", thirdColor: "black"})
     } else {
       this.setState({firstColor: "red", secondColor: "black", thirdColor: "black"})
     }
