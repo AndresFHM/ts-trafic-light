@@ -1,3 +1,4 @@
+
 import { Component } from "react";
 
 export class ClassTrafficLight extends Component {
@@ -16,3 +17,5 @@ export class ClassTrafficLight extends Component {
     );
   }
 }
+
+

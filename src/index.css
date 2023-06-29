@@ -15,7 +15,7 @@ main {
 }
 
 .container {
-  height: 90%;
+  height: 90vh;
   width: 100%;
   display: flex;
 }
@@ -25,6 +25,7 @@ main {
   height: 100%;
   width: 50%;
   outline: 5px solid black;
+  /* overflow: auto; */
 }
 
 .traffic-light-box {
@@ -44,8 +45,8 @@ main {
 }
 
 .traffic-light {
-  height: 500px;
-  width: 200px;
+  height: 300px;
+  width: 180px;
   background-color: #f5d81b;
   border: 5px solid black;
   display: flex;
@@ -55,8 +56,8 @@ main {
 }
 
 .traffic-light > .circle {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   border-radius: 100%;
   border: 3px solid black;
 }
@@ -82,3 +83,5 @@ main {
 .yellow {
   background-color: yellow;
 }
+
+
