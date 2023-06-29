@@ -1,35 +1,7 @@
 
-// export const FunctionalTrafficLight = () => {
-
-//   const nextColor = () => {
-//     setTrafficColor
-//   }
-//   return (
-//     <div className="traffic-light-box">
-//       <h2>Functional Traffic Light</h2>
-//       <div className="traffic-light">
-//         {/* Background color can be black | yellow | red | green */}
-//         <div className="circle red"></div>
-//         <div className="circle black"></div>
-//         <div className="circle black"></div>
-//       </div>
-//       <button
-//         className="next-state-button"
-//         onClick={() => {
-//           nextColor()
-//         }}
-//       >
-//         Next State
-//       </button>
-//     </div>
-//   );
-// };
-
 import React, { useState } from "react";
 
-interface FunctionalTrafficLightProps {
-  // Add any props if needed
-}
+interface FunctionalTrafficLightProps {}
 
 export const FunctionalTrafficLight: React.FC<FunctionalTrafficLightProps> = ({}) => {
   const [firstColor, setFirstColor] = useState<"red" | "black">("red");
@@ -54,7 +26,6 @@ export const FunctionalTrafficLight: React.FC<FunctionalTrafficLightProps> = ({}
     <div className="traffic-light-box">
       <h2>Functional Traffic Light</h2>
       <div className="traffic-light">
-        {/* Background color can be black | yellow | red | green */}
         <div className={`circle ${firstColor}`}></div>
         <div className={`circle ${secondColor}`}></div>
         <div className={`circle ${thirdColor}`}></div>
