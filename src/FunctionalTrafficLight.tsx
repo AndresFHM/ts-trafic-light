@@ -1,36 +1,46 @@
 
-import React, { useState } from "react";
+import  { useState } from "react";
 
-interface FunctionalTrafficLightProps {}
 
-export const FunctionalTrafficLight: React.FC<FunctionalTrafficLightProps> = () => {
-  const [firstColor, setFirstColor] = useState<"red" | "black">("red");
-  const [secondColor, setSecondColor] = useState<"black" | "yellow">("black");
-  const [thirdColor, setThirdColor] = useState<"black" | "green">("black");
+const trafficColors = [
+  {
+    top: "red",
+    middle: "black",
+    bottom: "black"
+  },
+  {
+    top: "black",
+    middle: "black",
+    bottom: "green"
+  },
+  {
+    top: "black",
+    middle: "yellow",
+    bottom: "black"
+  },
+  
+]
 
+export const FunctionalTrafficLight = () => {
+  const [slideIndex, setSlideIndex] = useState(0)
+  const currentColor = trafficColors[slideIndex]
+  
   const nextState = () => {
-    if (firstColor === "red") {
-      setFirstColor("black");
-      setThirdColor("green");
-    } else if (thirdColor === "green") {
-      setSecondColor("yellow");
-      setThirdColor("black");
-    } else {
-      setFirstColor("red");
-      setSecondColor("black");
-      setThirdColor("black");
-    }
+    setSlideIndex((slideIndex) => (slideIndex + 1) % trafficColors.length);
   };
 
   return (
     <div className="traffic-light-box">
       <h2>Functional Traffic Light</h2>
       <div className="traffic-light">
-        <div className={`circle ${firstColor}`}></div>
-        <div className={`circle ${secondColor}`}></div>
-        <div className={`circle ${thirdColor}`}></div>
+        <div className={`circle ${currentColor.top}`}></div>
+        <div className={`circle ${currentColor.middle}`}></div>
+        <div className={`circle ${currentColor.bottom}`}></div>
       </div>
-      <button className="next-state-button" onClick={nextState}>
+      <button 
+        className="next-state-button" 
+        onClick={nextState}
+        >
         Next State
       </button>
     </div>

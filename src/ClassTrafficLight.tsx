@@ -1,45 +1,50 @@
 
 import { Component } from "react";
 
-interface ClassTrafficLightProps { }
-interface ClassTrafficLightState{
-  firstColor: "red" | "black";
-  secondColor: "black" | "yellow";
-  thirdColor: "black" | "green";
-}
+const trafficColors = [
+  {
+    top: "red",
+    middle: "black",
+    bottom: "black"
+  },
+  {
+    top: "black",
+    middle: "black",
+    bottom: "green"
+  },
+  {
+    top: "black",
+    middle: "yellow",
+    bottom: "black"
+  },
+  
+]
 
-export class ClassTrafficLight extends Component<ClassTrafficLightProps, ClassTrafficLightState> {
-  constructor(props: ClassTrafficLightProps) {
-    super(props);
-    this.state = {
-      firstColor: "red",
-      secondColor: "black",
-      thirdColor: "black",
-    }
-  }
 
+export class ClassTrafficLight extends Component{
+  state = {
+    slideIndex: 0
+  };
+  
   nextState = () => {
-    const { firstColor,  thirdColor } = this.state;
-
-    if (firstColor === "red") {
-      this.setState({ firstColor: "black", thirdColor: "green" })
-    } else if (thirdColor === "green") {
-      this.setState({secondColor: "yellow", thirdColor: "black"})
-    } else {
-      this.setState({firstColor: "red", secondColor: "black", thirdColor: "black"})
-    }
-  }
+    this.setState((prevState: { slideIndex: number }) => ({
+      slideIndex: (prevState.slideIndex + 1) % trafficColors.length
+    }))
+  };
 
   render() {
-    const { firstColor, secondColor, thirdColor } = this.state;
+
+    const {slideIndex} = this.state;
+    const currentColor = trafficColors[slideIndex];
+
     return (
       <div className="traffic-light-box">
         <h2>Class Traffic Light</h2>
         <div className="traffic-light">
 
-          <div className={`circle ${firstColor}`}></div>
-          <div className={`circle ${secondColor}`}></div>
-          <div className={`circle ${thirdColor}`}></div>
+          <div className={`circle ${currentColor.top}`}></div>
+          <div className={`circle ${currentColor.middle}`}></div>
+          <div className={`circle ${currentColor.bottom}`}></div>
         </div>
         <button
           className="next-state-button"
